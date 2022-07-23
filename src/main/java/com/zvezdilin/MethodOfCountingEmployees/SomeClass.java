@@ -29,7 +29,7 @@ public class SomeClass {
         return Optional.of(OptionalInt.of(countOfEmployees.size()));
     }
 
-    //variant 2
+    //variant_2
     public static int getCountOfEmployeesVariantSecond(HashMap<@NotNull String, String> employeeTasks,
                                                             HashMap<String, String> taskStatuses) {
         int activeUniqueCount = (int)  employeeTasks.entrySet().stream()
@@ -44,9 +44,6 @@ public class SomeClass {
         return activeUniqueCount;
     }
 }
-
-
-
 /*
   Написать метод, принимающий аргументом список, содержащий в себе структуры HashMap<String,String>, описывающие
   объекты типа "Задача проекта".
