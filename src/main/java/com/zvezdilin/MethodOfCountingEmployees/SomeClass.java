@@ -2,6 +2,7 @@ package com.zvezdilin.MethodOfCountingEmployees;
 
 import com.zvezdilin.MethodOfCountingEmployees.entites.State;
 import com.zvezdilin.MethodOfCountingEmployees.entites.Task;
+import jakarta.validation.constraints.NotNull;
 
 import java.util.*;
 
@@ -29,14 +30,16 @@ public class SomeClass {
     }
 
     //variant 2
-    public static int getCountOfEmployeesVariantSecond(HashMap<String, String> employeeTasks,
+    public static int getCountOfEmployeesVariantSecond(HashMap<@NotNull String, String> employeeTasks,
                                                             HashMap<String, String> taskStatuses) {
         int activeUniqueCount = (int)  employeeTasks.entrySet().stream()
                 .filter(x -> {
                 String state = taskStatuses.get(x.getKey());
                 return state.equals("active");
                 })
-                .map(x -> x.getValue()).distinct().count();
+                .map(x -> x.getValue())
+                .distinct()
+                .count();
 
         return activeUniqueCount;
     }
