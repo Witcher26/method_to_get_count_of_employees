@@ -27,6 +27,19 @@ public class SomeClass {
         }
         return Optional.of(OptionalInt.of(countOfEmployees.size()));
     }
+
+    //variant 2
+    public static int getCountOfEmployeesVariantSecond(HashMap<String, String> employeeTasks,
+                                                            HashMap<String, String> taskStatuses) {
+        int activeUniqueCount = (int)  employeeTasks.entrySet().stream()
+                .filter(x -> {
+                String state = taskStatuses.get(x.getKey());
+                return state.equals("active");
+                })
+                .map(x -> x.getValue()).distinct().count();
+
+        return activeUniqueCount;
+    }
 }
 
 
